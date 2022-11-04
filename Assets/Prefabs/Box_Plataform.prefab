@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1793486168592442247}
   - component: {fileID: 382736276385563950}
   - component: {fileID: 4115054070768695334}
+  - component: {fileID: 7198510638476937674}
+  - component: {fileID: 183036217950170300}
   m_Layer: 0
   m_Name: Box_Plataform
   m_TagString: Untagged
@@ -29,6 +31,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -3.2480426, y: -3.8732622, z: 16.055153}
   m_LocalScale: {x: 225.5599, y: 206.41133, z: 166.21947}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -52,6 +55,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -95,3 +99,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.006732451, y: 0.0072704186, z: 0.0049516186}
   m_Center: {x: 0.000019994448, y: 0.000044808134, z: 0.0024758093}
+--- !u!95 &7198510638476937674
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4115054070768695335}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5e7e02720cad64144840d0c98f61a50f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &183036217950170300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4115054070768695335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa90cdc8813a7fc4499cfac08eba54a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimDuration: 2
+  floatLevel: 0.16
