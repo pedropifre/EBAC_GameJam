@@ -9,7 +9,7 @@ public class FloorBase : MonoBehaviour
     {
         if (other.transform.tag == "Player")
         {
-            other.gameObject.GetComponent<HealthBase>().Damage(1);
+            other.gameObject.GetComponent<HealthBase>().Damage(100);
             Debug.Log("Dano");
         }
     }

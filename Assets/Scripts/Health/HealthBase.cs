@@ -8,7 +8,7 @@ public class HealthBase : MonoBehaviour, IDamagable
 {
     public float StartLife = 10f;
     public bool destroyOnKill = false;
-    [SerializeField] private float _currentLife;
+    public float _currentLife;
 
     public Action<HealthBase> OnDamage;
     public Action<HealthBase> OnKill;
