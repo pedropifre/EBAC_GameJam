@@ -32,10 +32,11 @@ public class ProjectileBase : MonoBehaviour
 
                 if (damageable != null)
                 {
-                    Debug.Log("jbdfhjs");
+                    //Debug.Log("posição original = " + collision.transform.position
+                      //  + " -- posição sub = " + transform.position);
                     Vector3 dir = collision.transform.position - transform.position;
                     dir = -dir.normalized;
-                    dir.y = 0;
+                    
                     damageable.Damage(damageAmount,dir);
 
                 }

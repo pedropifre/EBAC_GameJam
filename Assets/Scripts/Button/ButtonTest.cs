@@ -20,7 +20,7 @@ public class ButtonTest : ButtonBase
         {
             int coins = ItemManager.Instance.ReturnCoins(ItemType.COIN);
             Debug.Log(coins);
-            if (coins > 20)
+            if (coins >= 20)
             {
                 base.OnTriggerStay(other);
                 plataform.transform.DOMove(final_pos.position, duration);

@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using GeneralUtils.Core.Singleton;
 
-public class FirstPersonMovement : MonoBehaviour
+public class FirstPersonMovement : Singleton<FirstPersonMovement>
 {
     public float speed = 5;
 
@@ -15,9 +16,12 @@ public class FirstPersonMovement : MonoBehaviour
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
 
+    public bool canWalk = true;
 
 
-    void Awake()
+
+
+    protected override void Awake()
     {
         // Get the rigidbody on this.
         rigidbody = GetComponent<Rigidbody>();
@@ -25,20 +29,34 @@ public class FirstPersonMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Update IsRunning from input.
-        IsRunning = canRun && Input.GetKey(runningKey);
+        if(canWalk)
+        { 
+            // Update IsRunning from input.
+            IsRunning = canRun && Input.GetKey(runningKey);
 
-        // Get targetMovingSpeed.
-        float targetMovingSpeed = IsRunning ? runSpeed : speed;
-        if (speedOverrides.Count > 0)
-        {
-            targetMovingSpeed = speedOverrides[speedOverrides.Count - 1]();
+            // Get targetMovingSpeed.
+            float targetMovingSpeed = IsRunning ? runSpeed : speed;
+            if (speedOverrides.Count > 0)
+            {
+                targetMovingSpeed = speedOverrides[speedOverrides.Count - 1]();
+            }
+
+            // Get targetVelocity from input.
+            Vector2 targetVelocity =new Vector2( Input.GetAxis("Horizontal") * targetMovingSpeed, Input.GetAxis("Vertical") * targetMovingSpeed);
+
+            // Apply movement.
+            rigidbody.velocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.velocity.y, targetVelocity.y);
         }
-
-        // Get targetVelocity from input.
-        Vector2 targetVelocity =new Vector2( Input.GetAxis("Horizontal") * targetMovingSpeed, Input.GetAxis("Vertical") * targetMovingSpeed);
-
-        // Apply movement.
-        rigidbody.velocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.velocity.y, targetVelocity.y);
     }
+
+    public void CantRun(bool can)
+    {
+
+        if (!can) canWalk = false;
+        else canWalk = true;
+    }
+
+
+
+   
 }

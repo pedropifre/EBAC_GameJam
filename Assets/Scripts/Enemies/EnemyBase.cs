@@ -9,7 +9,7 @@ namespace Enemy
 {
     public class EnemyBase : MonoBehaviour, IDamagable
     {
-        public Collider collider;
+        public Collider collider2;
         public FlashColor flashColor;
         public ParticleSystem particleSystem;
         public float StartLife = 10f;
@@ -63,7 +63,7 @@ namespace Enemy
 
         protected virtual void OnKill()
         {
-            if (collider != null) collider.enabled = false;
+            if (collider2 != null) collider2.enabled = false;
             Destroy(gameObject,3f);
             //PlayAnimationByTrigger(AnimationType.DEATH);
             OnKillEvent?.Invoke();
@@ -120,8 +120,7 @@ namespace Enemy
         private void OnCollisionEnter(Collision collision)
         {
             Player p = collision.transform.GetComponent<Player>();
-
-            if (p != null)
+                   if (p != null)
             {
                 p.healthBase.Damage(1);
             }

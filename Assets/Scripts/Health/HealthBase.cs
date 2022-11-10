@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 
 public class HealthBase : MonoBehaviour, IDamagable
@@ -13,8 +14,14 @@ public class HealthBase : MonoBehaviour, IDamagable
     public Action<HealthBase> OnDamage;
     public Action<HealthBase> OnKill;
 
-
     public float damageMultiply = 1f;
+
+    [Header("velocity Hit")]
+    public float xForce;
+    public float yForce;
+    public float zForce;
+    public float durationForce;
+    public FirstPersonMovement firstPersonMovement;
 
     private void Awake()
     {
@@ -62,9 +69,31 @@ public class HealthBase : MonoBehaviour, IDamagable
 
     public void Damage(float damage, Vector3 dir)
     {
+        if (dir.y > 0) dir.y *= -1f;
+        //gameObject.transform.DOMove(gameObject.transform.position - dir, durationHit);
+        dir.y = gameObject.transform.position.y * yForce;
+        dir.x = gameObject.transform.position.x + xForce;
+        dir.z = gameObject.transform.position.z * zForce;
+
+        Rigidbody corpo = gameObject.GetComponent<Rigidbody>();
+        StartCoroutine(unableWalk());
+        corpo.AddRelativeForce(dir);
+        
+
         Damage(damage); 
     }
 
+    IEnumerator unableWalk()
+    {
+        Debug.Log("djnaijk");
+        firstPersonMovement.CantRun(false);
+        yield return new WaitForSeconds(durationForce);
+        firstPersonMovement.CantRun(true);
+    }
+
+   
+
+    
     public void ChangeDamageMultiply(float damageMultiply, float duration)
     {
         StartCoroutine(ChangeDamageMultiplyCourotine(damageMultiply, duration));
