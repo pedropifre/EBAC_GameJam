@@ -1844,7 +1844,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Smoothness",
     "m_StageCapability": 2,
-    "m_Value": 0.5,
+    "m_Value": -0.029999999329447748,
     "m_DefaultValue": 0.5,
     "m_Labels": []
 }
@@ -2628,7 +2628,7 @@
     "m_ShaderOutputName": "Emission",
     "m_StageCapability": 2,
     "m_Value": {
-        "x": 1.0,
+        "x": 0.7490196228027344,
         "y": 0.0,
         "z": 0.0
     },
