@@ -21,6 +21,7 @@ namespace Enemy
   
         public void StartShooting()
         {
+            Debug.Log("jdksandji");
             gunBase.StartShoot();
             MeshChangeSleep.GetComponent<Renderer>().material.SetTexture("_MainTex", textureAwake);
         }

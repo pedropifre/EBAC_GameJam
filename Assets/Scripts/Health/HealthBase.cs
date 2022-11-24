@@ -15,6 +15,7 @@ public class HealthBase : MonoBehaviour, IDamagable
     public Action<HealthBase> OnKill;
 
     public float damageMultiply = 1f;
+    public HealthUI healthUI;
 
     [Header("velocity Hit")]
     public float xForce;
@@ -65,6 +66,11 @@ public class HealthBase : MonoBehaviour, IDamagable
         }
         
         OnDamage?.Invoke(this);
+
+        if (healthUI != null)
+        {
+            healthUI.UpdateLifeUI();
+        }
     }
 
     public void Damage(float damage, Vector3 dir)
