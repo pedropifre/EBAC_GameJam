@@ -14,6 +14,11 @@ public class Player : Singleton<Player>
         healthBase._currentLife = healthBase.StartLife;
     }
 
+    public void MoveSpawn(Vector3 pos)
+    {
+        respawn.transform.position = pos;
+    }
+
 
 
 }
