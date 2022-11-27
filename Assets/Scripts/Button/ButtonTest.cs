@@ -18,7 +18,15 @@ public class ButtonTest : ButtonBase
     public TextMeshProUGUI noCoins;
     public AudioSource audioWrong;
 
-    
+    [Header("Coins necessary")]
+    public int coinsNecessary;
+
+    [Header("Spwn Atualizaiton")]
+    public bool needSpawn;
+    public GameObject spawnPosition;
+    public GameObject spawnObject;
+
+
 
     protected override void OnTriggerStay(Collider other)
     {
@@ -28,11 +36,15 @@ public class ButtonTest : ButtonBase
             textTip.gameObject.SetActive(false); 
             int coins = ItemManager.Instance.ReturnCoins(ItemType.COIN);
             Debug.Log(coins);
-            if (coins >= 20)
+            if (coins >= coinsNecessary)
             {
                 base.OnTriggerStay(other);
                 plataform.transform.DOMove(final_pos.position, duration);
                 StartCoroutine(ChangeCamera(cameraTarget));
+                if (needSpawn)
+                {
+                    spawnObject.transform.position = spawnPosition.transform.position; 
+                }
             }
             else
             {

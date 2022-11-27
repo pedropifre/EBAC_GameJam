@@ -15,7 +15,10 @@ public class QuestionSend : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && !_enviada)
         {
             _enviada = true;
+            gameObject.GetComponent<Animator>().SetTrigger("Pressed");
+            gameObject.GetComponent<AudioSource>().Play();
             StartCoroutine(EnviarReposta(resp));
+
         }
     }
     IEnumerator EnviarReposta(string answer)

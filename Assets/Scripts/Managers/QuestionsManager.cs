@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using GeneralUtils.Core.Singleton;
+using DG.Tweening;
 
 namespace Question
 {
@@ -17,18 +18,26 @@ namespace Question
         public TextMeshPro dOpcao;
         [SerializeField]private string respostaSorteada;
 
+        [Header("UI")]
+        public TextMeshProUGUI txtCorretas;
+
         [Header("Player damage")]
         public Player player;
 
-        private bool _feita = false; 
+        [Header("Objetos para esconder")]
+        public List<GameObject> hideObjects;
+
+        [Header("SpawnChave")]
+        public Vector3 posicaoFinal;
+        public GameObject keyFinal;
+
+        private bool _feita = false;
+        [SerializeField] private int _perguntasCorretas =0;  
+
 
         private void OnTriggerStay(Collider other)
         {
-            txtPergunta.gameObject.SetActive(true);
-            aOpcao.gameObject.SetActive(true);
-            bOpcao.gameObject.SetActive(true);
-            cOpcao.gameObject.SetActive(true);
-            dOpcao.gameObject.SetActive(true);
+
             if (other.gameObject.tag == "Player" && !_feita)
             {
                 _feita = true;
@@ -36,14 +45,21 @@ namespace Question
             }
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            foreach (var i in hideObjects)
+            {
+                i.SetActive(true);
+            }
+        }
+
         private void OnTriggerExit(Collider other)
         {
-            txtPergunta.gameObject.SetActive(false);
-            aOpcao.gameObject.SetActive(false);
-            bOpcao.gameObject.SetActive(false);
-            cOpcao.gameObject.SetActive(false);
-            dOpcao.gameObject.SetActive(false);
-    }
+            foreach (var i in hideObjects)
+            {
+                i.SetActive(false);
+            }
+        }
 
         private void SortearPergunta()
         {
@@ -61,13 +77,46 @@ namespace Question
             if (opcao == respostaSorteada)
             {
                 Debug.Log("Resposta correta");
-                _feita = false;
-                SortearPergunta();
+                _perguntasCorretas++;
+                if (_perguntasCorretas >= 10)
+                {
+                    foreach (var i in hideObjects)
+                    {
+                        i.SetActive(false);
+                    }
+                    //tocar musica de vitoria
+                    gameObject.GetComponent<AudioSource>().Play();
+                    //spawnar key
+                    keyFinal.transform.DOLocalMove(posicaoFinal, 4).SetEase(Ease.OutBack);
+                }
+                else
+                {
+                    _feita = false;
+                    SortearPergunta();
+                    txtCorretas.text =  _perguntasCorretas.ToString() + "/10 Respostas corretas" ;
+                }
             }
             else
             {
                 Debug.Log("Resposta errada");
                 player.healthBase.Damage(1);
+                _feita = false;
+                SortearPergunta();
+            }
+        }
+
+        private void VerificarFinal(int corretas)
+        {
+            if (corretas >= 2)
+            {
+                foreach (var i in hideObjects)
+                {
+                    i.SetActive(false);
+                }
+                //tocar musica de vitoria
+                gameObject.GetComponent<AudioSource>().Play();
+                //spawnar key
+                keyFinal.transform.DOMove(posicaoFinal, 4).SetEase(Ease.OutBounce);            
             }
         }
     }

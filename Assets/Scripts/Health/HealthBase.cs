@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
-
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class HealthBase : MonoBehaviour, IDamagable
 {
@@ -23,6 +25,14 @@ public class HealthBase : MonoBehaviour, IDamagable
     public float zForce;
     public float durationForce;
     public FirstPersonMovement firstPersonMovement;
+
+    [Header("Hit FeedBack")]
+    public VolumeProfile volume;
+    public float durationFeedback;
+    public Color colorFeedback;
+    public AudioSource audioDamage;
+
+
 
     private void Awake()
     {
@@ -57,6 +67,11 @@ public class HealthBase : MonoBehaviour, IDamagable
  
     public void Damage(float f)
     {
+        ColorAdjustments cA;
+        volume.TryGet(out cA);
+
+        StartCoroutine(VolumeDamage(cA));
+
 
         _currentLife -= f * damageMultiply;
 
@@ -72,7 +87,22 @@ public class HealthBase : MonoBehaviour, IDamagable
             healthUI.UpdateLifeUI();
         }
     }
+    [NaughtyAttributes.Button]
+    public void testFeedback()
+    {
+        ColorAdjustments cA;
+        volume.TryGet(out cA);
 
+        StartCoroutine(VolumeDamage(cA));
+    }
+    IEnumerator VolumeDamage(ColorAdjustments colorAd)
+    {
+        colorAd.colorFilter.Override(colorFeedback);
+        audioDamage.Play();
+        yield return new WaitForSeconds(durationFeedback);
+        colorAd.colorFilter.Override(Color.white);
+
+    }
     public void Damage(float damage, Vector3 dir)
     {
         if (dir.y > 0) dir.y *= -1f;
