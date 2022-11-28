@@ -32,24 +32,22 @@ namespace Question
         public GameObject keyFinal;
 
         private bool _feita = false;
+        [SerializeField] private int perguntasFeitas = 0;
         [SerializeField] private int _perguntasCorretas =0;  
 
 
-        private void OnTriggerStay(Collider other)
-        {
-
-            if (other.gameObject.tag == "Player" && !_feita)
-            {
-                _feita = true;
-                SortearPergunta();
-            }
-        }
+        
 
         private void OnTriggerEnter(Collider other)
         {
             foreach (var i in hideObjects)
             {
                 i.SetActive(true);
+            }
+            if (other.gameObject.tag == "Player" && !_feita)
+            {
+                _feita = true;
+                SortearPergunta();
             }
         }
 
@@ -62,14 +60,19 @@ namespace Question
         }
 
         private void SortearPergunta()
-        {
-            var numero = Random.Range(0, classePerguntas.Count);
-            txtPergunta.text = classePerguntas[numero].pergunta;
-            aOpcao.text = "A) " + classePerguntas[numero].a;
-            bOpcao.text = "B) " + classePerguntas[numero].b;
-            cOpcao.text = "C) " + classePerguntas[numero].c;
-            dOpcao.text = "D) " + classePerguntas[numero].d;
-            respostaSorteada = classePerguntas[numero].reposta;
+        {                      
+            txtPergunta.text = classePerguntas[perguntasFeitas].pergunta;
+            aOpcao.text = "A) " + classePerguntas[perguntasFeitas].a;
+            bOpcao.text = "B) " + classePerguntas[perguntasFeitas].b;
+            cOpcao.text = "C) " + classePerguntas[perguntasFeitas].c;
+            dOpcao.text = "D) " + classePerguntas[perguntasFeitas].d;
+            respostaSorteada = classePerguntas[perguntasFeitas].reposta;
+            perguntasFeitas++;
+            Debug.Log("a");
+            if (perguntasFeitas >= classePerguntas.Count)
+            {
+                perguntasFeitas=0;
+            }
         }
 
         public void verificarResposta(string opcao)
@@ -105,20 +108,7 @@ namespace Question
             }
         }
 
-        private void VerificarFinal(int corretas)
-        {
-            if (corretas >= 2)
-            {
-                foreach (var i in hideObjects)
-                {
-                    i.SetActive(false);
-                }
-                //tocar musica de vitoria
-                gameObject.GetComponent<AudioSource>().Play();
-                //spawnar key
-                keyFinal.transform.DOMove(posicaoFinal, 4).SetEase(Ease.OutBounce);            
-            }
-        }
+       
     }
 
 

@@ -7,6 +7,7 @@ public class KeyCollect : MonoBehaviour
 {
     public SOInt soKey;
     public TextMeshProUGUI textoPressE;
+    public bool needToRespawn;
 
 
     private void OnTriggerStay(Collider other)
@@ -17,6 +18,10 @@ public class KeyCollect : MonoBehaviour
             soKey.value++;
             gameObject.SetActive(false);
             textoPressE.gameObject.SetActive(false);
+            if (needToRespawn)
+            {
+                Player.Instance.RespawnPlayer();
+            }
         }
     }
 

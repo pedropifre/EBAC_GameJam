@@ -3304,6 +3304,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: chave
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4c43ea4dc329d114daf6d8b8957b6b20, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c43ea4dc329d114daf6d8b8957b6b20, type: 3}
 --- !u!1 &181634709
@@ -4916,7 +4920,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7336a10e6627b494fac16c29b56f0924, type: 2}
+  - {fileID: 2100000, guid: f04bb814c1af65c468a8f64badc18fd1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6032,6 +6036,7 @@ MonoBehaviour:
   - {fileID: 337731070}
   posicaoFinal: {x: 3.096973, y: 25.78305, z: 66.64005}
   keyFinal: {fileID: 1806210035}
+  perguntasFeitas: 0
   _perguntasCorretas: 0
 --- !u!65 &314841979
 BoxCollider:
@@ -19008,7 +19013,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7336a10e6627b494fac16c29b56f0924, type: 2}
+  - {fileID: 2100000, guid: f04bb814c1af65c468a8f64badc18fd1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21388,7 +21393,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7336a10e6627b494fac16c29b56f0924, type: 2}
+  - {fileID: 2100000, guid: f04bb814c1af65c468a8f64badc18fd1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24414,8 +24419,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.603215, y: 3.8364584, z: 6.247914}
-  m_Center: {x: -8.371606, y: 2.5582292, z: 6.1807375}
+  m_Size: {x: 12.3093605, y: 5.060532, z: 9.482281}
+  m_Center: {x: -6.018542, y: 1.9461917, z: 6.1765876}
 --- !u!114 &998049738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24430,6 +24435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionsManager: {fileID: 314841978}
   resp: c
+  textoRespostaUI: {fileID: 0}
 --- !u!95 &998049739
 Animator:
   serializedVersion: 4
@@ -29420,8 +29426,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.603215, y: 3.8364584, z: 6.247914}
-  m_Center: {x: -8.371606, y: 2.5582292, z: 6.1807375}
+  m_Size: {x: 7.6032147, y: 5.290084, z: 7.8315554}
+  m_Center: {x: -8.371605, y: 1.8314149, z: 6.61256}
 --- !u!114 &1258483292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29436,6 +29442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionsManager: {fileID: 314841978}
   resp: a
+  textoRespostaUI: {fileID: 0}
 --- !u!95 &1258483293
 Animator:
   serializedVersion: 4
@@ -41255,8 +41262,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.603214, y: 3.8364584, z: 8.248003}
-  m_Center: {x: -8.371606, y: 2.5582292, z: 7.180781}
+  m_Size: {x: 11.152098, y: 6.0222015, z: 10.323305}
+  m_Center: {x: -6.5971627, y: 2.9458494, z: 6.537237}
 --- !u!114 &1803362109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41271,6 +41278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionsManager: {fileID: 314841978}
   resp: d
+  textoRespostaUI: {fileID: 0}
 --- !u!95 &1803362110
 Animator:
   serializedVersion: 4
@@ -41424,6 +41432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soKey: {fileID: 11400000, guid: efa5816fd8648d148861224980da060e, type: 2}
   textoPressE: {fileID: 338990960}
+  needToRespawn: 0
 --- !u!1 &1809746734
 GameObject:
   m_ObjectHideFlags: 0
@@ -43042,6 +43051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soKey: {fileID: 11400000, guid: efa5816fd8648d148861224980da060e, type: 2}
   textoPressE: {fileID: 338990960}
+  needToRespawn: 1
 --- !u!1 &1878592963
 GameObject:
   m_ObjectHideFlags: 0
@@ -47298,8 +47308,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.603215, y: 3.8364584, z: 6.247914}
-  m_Center: {x: -8.371606, y: 2.5582292, z: 6.1807375}
+  m_Size: {x: 11.683714, y: 4.9022636, z: 8.217463}
+  m_Center: {x: -6.3313746, y: 2.0253267, z: 6.4906626}
 --- !u!114 &2090362414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47314,6 +47324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionsManager: {fileID: 314841978}
   resp: b
+  textoRespostaUI: {fileID: 0}
 --- !u!95 &2090362415
 Animator:
   serializedVersion: 4
@@ -49059,7 +49070,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1773623245030539}
   m_LocalRotation: {x: -0, y: 0.025288347, z: -0, w: -0.99968016}
-  m_LocalPosition: {x: 45.25, y: 2.4, z: 20.7}
+  m_LocalPosition: {x: 126.2, y: 12.4, z: 65.2}
   m_LocalScale: {x: 0.41168, y: 0.41168, z: 0.41168}
   m_ConstrainProportionsScale: 0
   m_Children:
