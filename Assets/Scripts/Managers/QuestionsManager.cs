@@ -81,7 +81,7 @@ namespace Question
             {
                 Debug.Log("Resposta correta");
                 _perguntasCorretas++;
-                if (_perguntasCorretas >= 10)
+                if (_perguntasCorretas >= 5)
                 {
                     foreach (var i in hideObjects)
                     {
@@ -96,7 +96,7 @@ namespace Question
                 {
                     _feita = false;
                     SortearPergunta();
-                    txtCorretas.text =  _perguntasCorretas.ToString() + "/10 Respostas corretas" ;
+                    txtCorretas.text =  _perguntasCorretas.ToString() + "/5 Respostas corretas" ;
                 }
             }
             else

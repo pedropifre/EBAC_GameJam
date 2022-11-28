@@ -6033,7 +6033,7 @@ MonoBehaviour:
     d: "Hindu\xEDsmo"
     reposta: c
   - pergunta: Quem foi o primeiro homem a pisar na Lua?
-    a: ' Yuri Gagarin'
+    a: Yuri Gagarin
     b: Buzz Aldrin
     c: Charles Conrad
     d: Neil Armstrong
@@ -6051,6 +6051,61 @@ MonoBehaviour:
     c: Os Y
     d: Os W
     reposta: c
+  - pergunta: "De onde \xE9 a inven\xE7\xE3o do chuveiro el\xE9trico?"
+    a: "Fran\xE7a"
+    b: Inglaterra
+    c: Brasil
+    d: "Austr\xE1lia"
+    reposta: c
+  - pergunta: "Quais o menor e o maior pa\xEDs do mundo?"
+    a: "Vaticano e R\xFAssia"
+    b: Nauru e China
+    c: "M\xF4naco e Canad\xE1"
+    d: Malta e Estados Unidos
+    reposta: a
+  - pergunta: Qual o nome do presidente do Brasil que ficou conhecido como Jango?
+    a: "J\xE2nio Quadros"
+    b: Jacinto Anjos
+    c: "Get\xFAlio Vargas"
+    d: "Jo\xE3o Goulart"
+    reposta: d
+  - pergunta: "Qual o livro mais vendido no mundo a seguir \xE0 B\xEDblia?"
+    a: "O Senhor dos An\xE9is"
+    b: Dom Quixote
+    c: "O Pequeno Pr\xEDncipe"
+    d: Ela, a Feiticeira
+    reposta: b
+  - pergunta: "Quantas casas decimais tem o n\xFAmero pi?"
+    a: Duas
+    b: Centenas
+    c: Milhares
+    d: Infinitas
+    reposta: d
+  - pergunta: "Qual o n\xFAmero m\xEDnimo de jogadores em cada time numa partida
+      de futebol?"
+    a: 8
+    b: 10
+    c: 7
+    d: 5
+    reposta: c
+  - pergunta: "Quanto tempo a luz do Sol demora para chegar \xE0 Terra?"
+    a: 12 minutos
+    b: 1 dia
+    c: 12 horas
+    d: 8 minutos
+    reposta: d
+  - pergunta: Em que oceano fica Madagascar?
+    a: "\xCDndico"
+    b: "Ant\xE1rtico"
+    c: "Atl\xE2ntico"
+    d: "Pac\xEDfico"
+    reposta: a
+  - pergunta: "Qual o metal cujo s\xEDmbolo qu\xEDmico \xE9 o Au?"
+    a: Cobre
+    b: Prata
+    c: "Merc\xFArio"
+    d: Ouro
+    reposta: d
   txtPergunta: {fileID: 1432559060}
   aOpcao: {fileID: 1270048761}
   bOpcao: {fileID: 1554399}
@@ -44367,7 +44422,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 00/10 Respostas corretas
+  m_text: 00/5 Respostas corretas
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
